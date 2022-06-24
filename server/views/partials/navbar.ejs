@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/home">Prabhusha</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li <% if (page==='home' ) { %>
+                class=" nav-item active"
+                <%} else { %>
+                    class="nav-item"
+                    <% } %>>
+                        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li <% if (page==='menu' ) { %>
+                class=" nav-item active"
+                <%} else { %>
+                    class="nav-item"
+                    <% } %>>
+                        <a class="nav-link" href="/menu">Menu</a>
+            </li>
+            <% if (!user) { %>
+                <li <% if (page==='login' ) { %>
+                    class=" nav-item active"
+                    <%} else { %>
+                        class="nav-item"
+                        <% } %>>
+                            <a class="nav-link" href="/user/login">Login</a>
+                </li>
+                <%} else { %>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <%=user.username%>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/user/cart">Cart</a>
+                            <a class="dropdown-item" href="/user/order">Orders</a>
+                            <%if(user.username==="Admin"){%>
+                                <a class="dropdown-item" href="/admin/">Admin Section</a>
+                                <%}%>
+                                    <a class="dropdown-item" href="/user/logout">Logout</a>
+                        </div>
+                    </li>
+                    <% } %>
+                        <li <% if (page==='helpme' ) { %>
+                            class=" nav-item active"
+                            <%} else { %>
+                                class="nav-item"
+                                <% } %>>
+                                    <a class="nav-link " href="/helpme">Contact Us</a>
+                        </li>
+        </ul>
+
+    </div>
+</nav>
